@@ -5,7 +5,8 @@ fn greet(name: &str) -> String {
 }
 
 use tauri::{
-    Manager, tray::{MouseButton, MouseButtonState, TrayIconBuilder, TrayIconEvent}, window,
+    Manager,
+    tray::{MouseButton, MouseButtonState, TrayIconBuilder, TrayIconEvent}
 };
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
@@ -14,7 +15,6 @@ pub fn run() {
         .plugin(tauri_plugin_opener::init())
         .invoke_handler(tauri::generate_handler![greet])
         .setup(|app| {
-
             // Cria o ícone na bandeja do sistema
             let _tray = TrayIconBuilder::new()
                 .icon(app.default_window_icon().unwrap().clone())
@@ -42,6 +42,20 @@ pub fn run() {
                     }
                 })
                 .build(app)?;
+
+            // Posiciona janela
+            if let Some(window) = app.get_webview_window("main") {
+                if let Ok(Some(monitor)) = window.current_monitor() {
+                    let screen_size = monitor.size();
+                    let window_size = window.outer_size().unwrap_or_default();
+
+                    let x = (screen_size.width as i32) - (window_size.width as i32) - 5;
+                    let y = (screen_size.height as i32) - (window_size.height as i32) - 50;
+
+                    let _ = window.set_position(tauri::PhysicalPosition::new(x, y));
+                }
+                let _ = window.show();
+            }
 
             Ok(())
         })
