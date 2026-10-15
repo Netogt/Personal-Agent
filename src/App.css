@@ -14,7 +14,7 @@
   font-family: 'Inter', system-ui, sans-serif;
   background: var(--bg);
   color: var(--text);
-  
+
 }
 
 * {
@@ -27,5 +27,7 @@
   height: 100vh;
   background: var(--surface);
 
-
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

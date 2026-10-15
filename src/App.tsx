@@ -3,6 +3,7 @@ import reactLogo from "./assets/react.svg";
 import { invoke } from "@tauri-apps/api/core";
 import "./App.css";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
   const [greetMsg, setGreetMsg] = useState("");
@@ -15,7 +16,8 @@ function App() {
 
   return (
     <main className="container">
-      <Header></Header>
+      <Header />
+      <Footer />
     </main>
   );
 }
