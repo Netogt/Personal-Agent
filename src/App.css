@@ -12,7 +12,7 @@
   --bot-bg: rgba(30, 30, 50, 0.9);
 
   font-family: 'Inter', system-ui, sans-serif;
-  background: var(--bg);
+  
   color: var(--text);
 
 }
@@ -25,8 +25,17 @@
 
 .container {
   height: 100vh;
-  background: var(--surface);
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  background-color: var(--bg);
+  
 
+}
+
+.main-section {
+
+  min-width: 385px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
