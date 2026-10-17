@@ -6,9 +6,6 @@ export default function Footer() {
     return (
         <footer>
             <TextInput />
-            <button className="btn-send">
-                <SendSvg />
-            </button>
         </footer>
     );
 }

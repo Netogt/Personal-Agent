@@ -3,30 +3,94 @@
     padding: 18px;
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid var(--border);
     width: 100%;
+    z-index: 10;
 
-    h1 {
-        font-size: 1rem;
-        font-weight: 500;
-    }
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(4, 7, 16, 0.72);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
 
-    button {
-        background: none;
-        border: 1px solid var(--border);
-        height: 24px;
-        width: 24px;
-        cursor: pointer;    
-        border-radius: 5px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        
-    }
 
     svg {
         height: 14px;
         width: 14px;
         color: var(--text);
     }
+}
+
+.topbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quantum-beacon {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--theme-primary);
+    box-shadow: 0 0 10px var(--theme-primary), 0 0 20px var(--theme-primary);
+    animation: beaconPulse 2s infinite ease-in-out;
+    transition: var(--transition-fast);
+}
+
+@keyframes beaconPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.3);
+        opacity: 0.5;
+    }
+}
+
+.brand-code {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    background: linear-gradient(135deg, #ffffff 30%, var(--theme-primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: var(--transition-fast);
+}
+
+/* Icon Buttons */
+.holo-icon-btn {
+    height: 26px;
+    width: 26px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.holo-icon-btn:hover {
+  background: var(--theme-dim);
+  border-color: var(--theme-border);
+  color: var(--theme-primary);
+}
+
+.holo-icon-btn.active {
+  background: var(--theme-dim);
+  border-color: var(--theme-primary);
+  color: var(--theme-primary);
+  box-shadow: 0 0 12px var(--theme-glow);
+}
+
+.holo-icon-btn.danger-hover:hover {
+  background: rgba(244, 63, 94, 0.15);
+  border-color: rgba(244, 63, 94, 0.4);
+  color: #fb7185;
 }

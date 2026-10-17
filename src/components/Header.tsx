@@ -8,11 +8,14 @@ export default function Header() {
 
     return (
         <header className='chat-header'>
-            <button>
+            <button className="holo-icon-btn">
                 <MenuSvg />
             </button>
-            <h1>Assistente Persoal</h1>
-            <button onClick={closeWindow}>
+            <div className="topbar-brand">
+                <div className="quantum-beacon"></div>
+                <span className="brand-code">AURA-9</span>
+            </div>
+            <button className="holo-icon-btn danger-hover" onClick={closeWindow}>
                 <XSvg />
             </button>
         </header>

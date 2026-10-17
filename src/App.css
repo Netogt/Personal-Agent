@@ -1,23 +1,91 @@
 :root {
-  --bg: #05050a;
-  --surface: rgba(15, 15, 25, 0.7);
-  --surface-2: rgba(25, 25, 40, 0.8);
-  --border: rgba(100, 120, 255, 0.15);
-  --primary: #7c5cff;
-  --primary-glow: #a78bfa;
-  --accent: #00f0ff;
-  --text: #e2e8f0;
-  --text-muted: #94a3b8;
-  --user-bg: linear-gradient(135deg, #7c5cff, #4f46e5);
-  --bot-bg: rgba(30, 30, 50, 0.9);
+ /* Common Dark Void Base */
+  --holo-bg-void: #020408;
+  --holo-bg-space: #050813;
+  --holo-bg-surface: rgba(9, 14, 28, 0.78);
+  --holo-bg-card: rgba(12, 18, 36, 0.65);
+  --holo-bg-glass: rgba(10, 16, 32, 0.88);
 
-  font-family: 'Inter', system-ui, sans-serif;
+  /* Typography */
+  --text-main: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --text-dim: #334155;
+
+  /* Fonts */
+  --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Layout & Radii */
+  --chat-max-width: 880px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+  --transition-fast: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   
-  color: var(--text);
-
 }
 
-* {
+/* ==========================================================================
+   THEME PALETTES (AZUL, LILÁS, VERMELHO, VERDE)
+   ========================================================================== */
+
+/* 1. AZUL QUÂNTICO (Default) */
+html[data-theme="blue"], :root {
+  --theme-primary: #00f7ff;
+  --theme-primary-bright: #70fdff;
+  --theme-secondary: #0088ff;
+  --theme-glow: rgba(0, 247, 255, 0.45);
+  --theme-glow-soft: rgba(0, 247, 255, 0.15);
+  --theme-dim: rgba(0, 247, 255, 0.12);
+  --theme-border: rgba(0, 247, 255, 0.3);
+  --avatar-filter: contrast(115%) saturate(125%) hue-rotate(0deg);
+  --beam-color: rgba(0, 247, 255, 0.22);
+}
+
+
+/* 2. LILÁS PSÍQUICO */
+html[data-theme="purple"] {
+  --theme-primary: #d946ef;
+  --theme-primary-bright: #f0abfc;
+  --theme-secondary: #a855f7;
+  --theme-glow: rgba(217, 70, 239, 0.45);
+  --theme-glow-soft: rgba(217, 70, 239, 0.15);
+  --theme-dim: rgba(217, 70, 239, 0.12);
+  --theme-border: rgba(217, 70, 239, 0.35);
+  --avatar-filter: contrast(115%) saturate(135%) hue-rotate(65deg);
+  --beam-color: rgba(217, 70, 239, 0.24);
+}
+
+/* 3. VERMELHO CYBER */
+html[data-theme="red"] {
+  --theme-primary: #ff0055;
+  --theme-primary-bright: #ff6699;
+  --theme-secondary: #ff3366;
+  --theme-glow: rgba(255, 0, 85, 0.48);
+  --theme-glow-soft: rgba(255, 0, 85, 0.15);
+  --theme-dim: rgba(255, 0, 85, 0.12);
+  --theme-border: rgba(255, 0, 85, 0.38);
+  --avatar-filter: contrast(120%) saturate(140%) hue-rotate(140deg);
+  --beam-color: rgba(255, 0, 85, 0.22);
+}
+
+/* 4. VERDE MATRIX */
+html[data-theme="green"] {
+  --theme-primary: #00ff88;
+  --theme-primary-bright: #86efac;
+  --theme-secondary: #00d26a;
+  --theme-glow: rgba(0, 255, 136, 0.45);
+  --theme-glow-soft: rgba(0, 255, 136, 0.15);
+  --theme-dim: rgba(0, 255, 136, 0.12);
+  --theme-border: rgba(0, 255, 136, 0.35);
+  --avatar-filter: contrast(115%) saturate(130%) hue-rotate(250deg);
+  --beam-color: rgba(0, 255, 136, 0.22);
+}
+
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -28,9 +96,15 @@
   display: flex;
   justify-content: space-between;
   gap: 15px;
-  background-color: var(--bg);
-  
 
+  background-color: var(--holo-bg-void);
+  color: var(--text-main);
+  font-family: var(--font-body);
+
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .main-section {

@@ -14,7 +14,7 @@
       {
         "title": "personal-assistant",
         "width": 385,
-        "height": 600,
+        "height": 800,
         "resizable": false,
         "decorations": false,
         "skipTaskbar": true,
