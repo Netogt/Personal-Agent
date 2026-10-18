@@ -94,6 +94,7 @@ html[data-theme="green"] {
 .container {
   height: 100vh;
   display: flex;
+    flex-direction: column;
   justify-content: space-between;
   gap: 15px;
 
@@ -111,6 +112,6 @@ html[data-theme="green"] {
 
   min-width: 385px;
   display: flex;
-  flex-direction: column;
+
   justify-content: space-between;
 }

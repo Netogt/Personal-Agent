@@ -1,0 +1,242 @@
+/* ==========================================================================
+   HOLOGRAPHIC STAGE (AVATAR EM HOLOGRAMA NO CENTRO EM CIMA)
+   Com Discos Concêntricos Superior e Inferior + Telemetria Sci-Fi
+   ========================================================================== */
+
+.holo-chamber {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 820px;
+  width: 100%;
+}
+
+/* ==========================================================================
+   CENTER STAGE (FEMALE HOLOGRAM + 3D CONSTELLATION WIREFRAME CANVAS)
+   ========================================================================== */
+
+.holo-center-stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.holo-avatar-holo-wrapper {
+  position: relative;
+  width: 125px;
+  height: 125px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  animation: holoLevitate 4s infinite ease-in-out;
+}
+
+@keyframes holoLevitate {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+/* Outer HUD Reticle Radar Rings */
+.holo-reticle-ring {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.ring-outer {
+  inset: -14px;
+  border: 1px solid var(--theme-border);
+  border-top-color: var(--theme-primary);
+  border-bottom-color: var(--theme-secondary);
+  animation: rotateClockwise 20s linear infinite;
+}
+
+.ring-middle {
+  inset: -8px;
+  border: 1px dashed var(--theme-secondary);
+  animation: rotateCounter 14s linear infinite;
+}
+
+.ring-dashed {
+  inset: -2px;
+  border: 2px dotted var(--theme-primary);
+  animation: rotateClockwise 28s linear infinite;
+}
+
+@keyframes rotateClockwise {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes rotateCounter {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+/* Sci-fi Hologram Brackets [ ] */
+.holo-bracket {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--theme-primary);
+  pointer-events: none;
+  opacity: 0.75;
+}
+
+/* Avatar Frame & Shaders */
+.holo-avatar-frame {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--theme-primary);
+  box-shadow: 
+    0 0 22px var(--theme-glow),
+    inset 0 0 20px var(--theme-glow);
+  background: #020610;
+  z-index: 2;
+}
+
+/* 3D Constellation Wireframe Canvas (Overlaid directly on the avatar!) */
+.holo-wireframe-canvas {
+  position: absolute;
+  inset: -25px;
+  width: 175px;
+  height: 175px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* Scanline Sweep Layer */
+.holo-scanline-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0) 50%,
+    rgba(0, 0, 0, 0.5) 50%
+  ),
+  linear-gradient(
+    90deg,
+    var(--theme-dim),
+    transparent
+  );
+  background-size: 100% 4px, 6px 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.holo-scanline-overlay::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 15px;
+  background: linear-gradient(180deg, transparent, var(--theme-glow), transparent);
+  animation: scanlineSweep 2.8s linear infinite;
+}
+
+@keyframes scanlineSweep {
+  0% { transform: translateY(-15px); }
+  100% { transform: translateY(115px); }
+}
+
+.holo-flicker-layer {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, transparent 50%, var(--theme-dim) 100%);
+  pointer-events: none;
+  mix-blend-mode: screen;
+  z-index: 3;
+  animation: holoJitter 0.15s infinite alternate;
+  opacity: 0.35;
+}
+
+@keyframes holoJitter {
+  0% { opacity: 0.25; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(1.01); }
+  100% { opacity: 0.3; transform: scale(0.99); }
+}
+
+/* Live Emitter Signal Beacon */
+.holo-emitter-beacon {
+  position: absolute;
+  bottom: -6px;
+  width: 12px;
+  height: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 6;
+}
+
+.beacon-core {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--theme-primary);
+  box-shadow: 0 0 10px var(--theme-primary);
+}
+
+.beacon-wave {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid var(--theme-primary);
+  animation: beaconPulseWave 2s infinite ease-out;
+}
+
+@keyframes beaconPulseWave {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+/* ==========================================================================
+   HOLOGRAM WAVEFORM SPECTRUM
+   ========================================================================== */
+
+/* Audio Waveform Spectrum Bars */
+.holo-waveform-bars {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 18px;
+  margin-top: 2px;
+}
+
+.wave-bar {
+  width: 3px;
+  height: 4px;
+  background: var(--theme-primary);
+  border-radius: 2px;
+  box-shadow: 0 0 5px var(--theme-primary);
+  transition: height 0.15s ease, background 0.3s ease;
+  animation: waveBarIdle 2s infinite ease-in-out;
+}
+
+.wave-bar:nth-child(1) { animation-delay: -0.2s; }
+.wave-bar:nth-child(2) { animation-delay: -0.5s; }
+.wave-bar:nth-child(3) { animation-delay: -0.8s; }
+.wave-bar:nth-child(4) { animation-delay: -0.1s; }
+.wave-bar:nth-child(5) { animation-delay: -0.9s; }
+.wave-bar:nth-child(6) { animation-delay: -0.3s; }
+.wave-bar:nth-child(7) { animation-delay: -0.7s; }
+.wave-bar:nth-child(8) { animation-delay: -0.4s; }
+.wave-bar:nth-child(9) { animation-delay: -0.6s; }
+.wave-bar:nth-child(10) { animation-delay: -0.2s; }
+.wave-bar:nth-child(11) { animation-delay: -0.5s; }
+.wave-bar:nth-child(12) { animation-delay: -0.8s; }
+.wave-bar:nth-child(13) { animation-delay: -0.3s; }
+.wave-bar:nth-child(14) { animation-delay: -0.7s; }
+.wave-bar:nth-child(15) { animation-delay: -0.4s; }
+
+@keyframes waveBarIdle {
+  0%, 100% { height: 4px; opacity: 0.5; }
+  50% { height: 12px; opacity: 1; }
+}
