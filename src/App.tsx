@@ -8,8 +8,7 @@ function App() {
   return (
     <main className="container" >
       <Header />
-      <Body />
-      <section className="main-section"></section>
+      <Body  />
       <Footer />
     </main>
   );

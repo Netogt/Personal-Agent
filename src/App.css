@@ -94,9 +94,8 @@ html[data-theme="green"] {
 .container {
   height: 100vh;
   display: flex;
-    flex-direction: column;
+  flex-direction: column;
   justify-content: space-between;
-  gap: 15px;
 
   background-color: var(--holo-bg-void);
   color: var(--text-main);
@@ -106,12 +105,4 @@ html[data-theme="green"] {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-.main-section {
-
-  min-width: 385px;
-  display: flex;
-
-  justify-content: space-between;
 }

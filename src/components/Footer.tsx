@@ -1,5 +1,5 @@
 import TextInput from "./TextInput"
-import "../css/Footer.css"
+import "../css/footer.css"
 import SendSvg from "../svg/SendSvg";
 
 export default function Footer() {

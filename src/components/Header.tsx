@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import '../css/Header.css';
+import '../css/header.css';
 import MenuSvg from '../svg/MenuSvg';
 import XSvg from '../svg/XSvg'
 import closeWindow from '../utils/closeWIndow';

@@ -1,0 +1,220 @@
+/* ==========================================================================
+   Chat Messages Flow
+   ========================================================================== */
+
+.holo-messages-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: 100%;
+    overflow-y: auto;
+    padding: 0 20px;
+}
+
+.holo-messages-flow::-webkit-scrollbar {
+  width: 6px;
+}
+.holo-messages-flow::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+.holo-messages-flow::-webkit-scrollbar-thumb:hover {
+  background: var(--theme-border);
+}
+
+.message-row {
+    display: flex;
+    gap: 14px;
+    animation: messageSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes messageSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* User Message */
+.message-row.user {
+    flex-direction: row-reverse;
+}
+
+.user-bubble-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+}
+
+.user-bubble {
+    padding: 0 20px;
+    /* background: linear-gradient(135deg, var(--theme-dim) 0%, rgba(255, 255, 255, 0.06) 100%); */
+    /* border: 1px solid var(--theme-border); */
+    border-radius: var(--radius-lg) var(--radius-sm) var(--radius-lg) var(--radius-lg);
+    color: #ffffff;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    /* box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4), 0 0 16px var(--theme-dim); */
+    backdrop-filter: blur(16px);
+    word-break: break-word;
+}
+
+.user-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--text-muted);
+}
+
+.meta-checks {
+    color: var(--theme-primary);
+}
+
+/* Agent Holographic Message */
+.message-row.agent {
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.agent-bubble-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+
+.agent-bubble {
+    padding: 14px 20px;
+    background: rgba(11, 17, 34, 0.85);
+    border: 1px solid var(--theme-border);
+    border-radius: var(--radius-sm) var(--radius-lg) var(--radius-lg) var(--radius-lg);
+    color: var(--text-main);
+    font-size: 0.85rem;
+    line-height: 1.6;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(24px);
+    position: relative;
+}
+
+.agent-bubble::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 20px;
+    right: 20px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--theme-primary), transparent);
+}
+
+/* Agent Action Bar below message */
+.agent-time {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--text-muted);
+}
+
+.agent-action-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.bubble-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.bubble-action-btn:hover {
+    background: var(--theme-dim);
+    border-color: var(--theme-border);
+    color: var(--theme-primary);
+}
+
+.bubble-action-btn.active {
+    color: var(--theme-primary);
+    background: var(--theme-dim);
+    border-color: var(--theme-primary);
+}
+
+.bubble-action-btn.speaking {
+    color: #fff;
+    background: var(--theme-glow);
+    animation: pulseSpeech 1s infinite alternate;
+}
+
+@keyframes pulseSpeech {
+    from {
+        opacity: 0.7;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* ==========================================================================
+   Typing Indicator
+   ========================================================================== */
+
+.holo-wave-dots {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.holo-wave-dots span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--theme-primary);
+    box-shadow: 0 0 6px var(--theme-primary);
+    animation: waveDotBounce 1.4s infinite ease-in-out both;
+}
+
+.holo-wave-dots span:nth-child(1) {
+    animation-delay: -0.32s;
+}
+
+.holo-wave-dots span:nth-child(2) {
+    animation-delay: -0.16s;
+}
+
+@keyframes waveDotBounce {
+
+    0%,
+    80%,
+    100% {
+        transform: scale(0.6);
+        opacity: 0.4;
+    }
+
+    40% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+}
+
+.typing-holo-text {
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    color: var(--text-secondary);
+}
